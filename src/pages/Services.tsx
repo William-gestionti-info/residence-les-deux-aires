@@ -1,201 +1,161 @@
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import Hero from '../components/Hero';
-import Section from '../components/Section';
-import FeatureCard from '../components/FeatureCard';
-import { services } from '../data/index';
-import { useEffect } from 'react';
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import ScrollAnimation from '../components/ScrollAnimation'
+import { motion } from 'framer-motion'
+import { CheckCircle2 } from 'lucide-react'
 
-const Services = () => {
-  useEffect(() => {
-    document.title = 'Services - Résidence Les Deux Aires';
-  }, []);
+const Services: React.FC = () => {
+  const serviceCategories = [
+    {
+      title: 'Hébergement et confort',
+      description: 'Nos logements sont conçus pour assurer votre confort et votre sécurité',
+      features: [
+        'Studios et appartements spacieux',
+        'Mobilier moderne et ergonomique',
+        'Climatisation et chauffage central',
+        'Accès internet haute vitesse',
+        'Télévision par câble',
+        'Téléphone dans chaque unité',
+        'Entretien ménager quotidien',
+        'Lessive et pressing',
+      ],
+    },
+    {
+      title: 'Services de soins de santé',
+      description: '24 heures sur 24, 7 jours sur 7 - Une équipe médicale dédiée',
+      features: [
+        'Infirmerie avec personnel qualifié',
+        'Gestion des médications',
+        'Suivi médical régulier',
+        'Services infirmiers à domicile',
+        'Coordination avec spécialistes',
+        'Assistance pour toilette et hygiène',
+        'Pénétrabilité pour personnes en fauteuil roulant',
+        'Système d\'alarme d\'urgence',
+      ],
+    },
+    {
+      title: 'Restauration et nutrition',
+      description: 'Des repas délicieux, sains et adaptés à vos besoins',
+      features: [
+        'Repas préparés par nos chefs',
+        'Menu végétarien et régimes spéciaux',
+        'Plateau-repas en chambre disponible',
+        'Cafétéria conçue pour socialiser',
+        'Nutrition adaptée aux conditions médicales',
+        'Hydratation et collations tout au long de la journée',
+        'Consultation avec nutritionniste',
+        'Menu varié et gourmand',
+      ],
+    },
+    {
+      title: 'Activités et loisirs',
+      description: 'Une vie enrichie par des activités variées et engageantes',
+      features: [
+        'Yoga et exercices doux',
+        'Jeux de société et activités mentales',
+        'Arts créatifs et artisanat',
+        'Événements culturels et spectacles',
+        'Sorties sociales organisées',
+        'Bibliotheèque et médiathtque',
+        'Cinéma et projections',
+        'Groupe de méditation et pleine conscience',
+      ],
+    },
+    {
+      title: 'Accompagnement social',
+      description: 'Un soutien humain adapté à vos besoins spécifiques',
+      features: [
+        'Assistance administrative',
+        'Organisation des rendez-vous médicaux',
+        'Soutien émotionnel et écoute',
+        'Aide aux appels téléphoniques',
+        'Accompagnement pour sorties',
+        'Gestion de correspondance',
+        'Coordination avec la famille',
+        'Orientation et ressources communautaires',
+      ],
+    },
+    {
+      title: 'Sécurité et commodités',
+      description: 'Votre sécurité est notre priorité absolue',
+      features: [
+        'Surveillance 24/7 par caméras',
+        'Personnel vigilant en permanence',
+        'Système d\'alarme d\'urgence',
+        'Portail sécurisé d\'accès',
+        'Conciergerie',
+        'Services d\'accueil de visiteurs',
+        'Stationné pour les visiteurs',
+        'Protocoles de sécurité avancés',
+      ],
+    },
+  ];
 
   return (
     <>
-      <Hero
-        subtitle="Services Complets"
-        title="Tout Ce Dont Vous Avez Besoin"
-        description="Découvrez notre large gamme de services conçus pour soutenir votre bien-être et votre qualité de vie."
-      />
+      <Helmet>
+        <title>Services | Résidence Les Deux Aires</title>
+        <meta name="description" content="Découvrez tous nos services : hébergement, soins de santé, restauration, activités, accompagnement et sécurité à Montréal." />
+      </Helmet>
 
-      <Section
-        title="Nos Services"
-        subtitle="Une offre complémentaire pour répondre à tous vos besoins"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <FeatureCard key={service.id} {...service} index={index} />
-          ))}
-        </div>
-      </Section>
-
-      <Section
-        className="gradient-bg"
-        title="Services de Santé"
-        subtitle="Soins professionnels et compassion 24/7"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.img
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            src="https://images.unsplash.com/photo-1631217314830-bae99b768741?w=600&h=500&fit=crop"
-            alt="Services de santé professionnels"
-            className="rounded-xl shadow-lg"
-          />
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Notre équipe médicale qualifiée est disponible 24 heures sur 24, 7 jours sur 7 pour assurer votre bien-être.
+      {/* Hero */}
+      <section className="min-h-[50vh] flex items-center justify-center bg-gradient-to-b from-primary-50 to-white pt-24">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollAnimation>
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">Nos services complets</h1>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+              Une gamme exhaustive de services conçus pour assurer votre bien-être, votre sécurité et votre satisfaction
             </p>
-
-            <ul className="space-y-3">
-              {[
-                'Soins infirmiers continus',
-                'Gestion précise des médicaments',
-                'Suivi médical régulier',
-                'Soins spécialisés',
-                'Services d\'urgence immédiate',
-                'Suivi de la nutrition et de la mobilité',
-              ].map((service, index) => (
-                <motion.li
-                  key={service}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-gray-700 font-medium flex items-center gap-3"
-                >
-                  <span className="w-2 h-2 bg-accent-500 rounded-full" />
-                  {service}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
+          </ScrollAnimation>
         </div>
-      </Section>
+      </section>
 
-      <Section
-        title="Restauration Haut de Gamme"
-        subtitle="Saveurs exquises, repas mémorables"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Notre chef cuisinier de renom prépare des menus variés et délicieux, adaptés aux besoins nutritionnels et préférences de chacun.
-            </p>
-
-            <ul className="space-y-3">
-              {[
-                'Chef cuisinier expérimenté',
-                'Menus équilibrés et savoureux',
-                'Service aux tables personnalisé',
-                'Options diététiques spéciales',
-                'Trois repas par jour',
-                'Café-bistro pour collations',
-              ].map((item, index) => (
-                <motion.li
-                  key={item}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-gray-700 font-medium flex items-center gap-3"
-                >
-                  <span className="w-2 h-2 bg-primary-600 rounded-full" />
-                  {item}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.img
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            src="https://images.unsplash.com/photo-1568152950566-c1bf43f0a86d?w=600&h=500&fit=crop"
-            alt="Salle à manger élégante"
-            className="rounded-xl shadow-lg"
-          />
+      {/* Services Details */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-16">
+            {serviceCategories.map((category, index) => (
+              <ScrollAnimation key={index} delay={index * 0.1}>
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">{category.title}</h2>
+                  <p className="text-lg text-slate-600 mb-8">{category.description}</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {category.features.map((feature, idx) => (
+                      <motion.div
+                        key={idx}
+                        whileHover={{ translateX: 8 }}
+                        className="flex items-start space-x-3 p-3 rounded-lg hover:bg-primary-50 transition-colors duration-300 cursor-pointer"
+                      >
+                        <CheckCircle2 className="text-primary-500 flex-shrink-0 mt-0.5" size={24} />
+                        <span className="text-slate-700">{feature}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                  {index < serviceCategories.length - 1 && <div className="border-t border-slate-200 mt-12" />}
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
-      <Section
-        className="gradient-bg"
-        title="Activités & Loisirs"
-        subtitle="Plus de 30 activités pour enrichir votre vie"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { title: 'Spectacles Musicaux', icon: 'Music' },
-            { title: 'Cours d\'Exercices', icon: 'Dumbbell' },
-            { title: 'Jeux de Société', icon: 'Gamepad2' },
-            { title: 'Sorties Organisées', icon: 'MapPin' },
-            { title: 'Cinéma Maison', icon: 'Film' },
-            { title: 'Ateliers Créatifs', icon: 'Palette' },
-            { title: 'Club de Lecture', icon: 'BookOpen' },
-            { title: 'Yoga & Méditation', icon: 'Wind' },
-            { title: 'Fêtes Spéciales', icon: 'Cake' },
-          ].map((activity, index) => (
-            <FeatureCard key={activity.title} {...activity} index={index} />
-          ))}
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-r from-primary-600 to-accent-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollAnimation>
+            <h2 className="text-4xl font-bold mb-6">Vous avez des questions sur nos services ?</h2>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => window.location.href = '/contact'}
+              className="px-8 py-4 bg-white text-primary-600 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Nous contacter
+            </motion.button>
+          </ScrollAnimation>
         </div>
-      </Section>
-
-      <Section
-        title="Commodités Pratiques"
-        subtitle="Tous les services dont vous avez besoin sous un même toit"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            { title: 'Pharmacie sur Place', description: 'Service de pharmacie complet pour vos besoins médicamenteux', icon: 'Pill' },
-            { title: 'Salon de Coiffure', description: 'Services de coiffure et de beauté professionnels', icon: 'Scissors' },
-            { title: 'Service de Navette', description: 'Transport gratuit pour courses et rendez-vous médicaux', icon: 'Bus' },
-            { title: 'Dépanneur', description: 'Petits articles et fournitures du quotidien', icon: 'ShoppingCart' },
-            { title: 'Conciergerie', description: 'Assistant personnalisé pour vos demandes spéciales', icon: 'Bell' },
-            { title: 'Internet Gratuit', description: 'Accès WiFi haute vitesse partout à la résidence', icon: 'Wifi' },
-          ].map((commodity, index) => (
-            <FeatureCard key={commodity.title} {...commodity} index={index} />
-          ))}
-        </div>
-      </Section>
-
-      <motion.section
-        className="section-padding bg-primary-600 text-white"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        <div className="container-wide">
-          <motion.div
-            className="max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-display">
-              Explorez Nos Services
-            </h2>
-            <p className="text-lg mb-8 text-gray-100">
-              Chaque service est conçu pour vous offrir le confort, la sécurité et le soutien que vous méritez.
-            </p>
-            <Link to="/contact" className="btn-secondary px-8 py-4">
-              Demander Plus d'Informations
-            </Link>
-          </motion.div>
-        </div>
-      </motion.section>
+      </section>
     </>
   );
 };
